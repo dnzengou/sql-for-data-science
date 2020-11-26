@@ -69,3 +69,33 @@ GROUP BY i.CustomerId
 ORDER BY COUNT(i.InvoiceId) DESC
 
 
+***
+
+## Module 3
+
+1.
+SELECT t.Name
+FROM Tracks t
+WHERE t.AlbumId = ( select a.AlbumId
+FROM Albums a
+WHERE a.Title = 'Californication')
+
+2.
+SELECT c.CustomerId, c.FirstName, c.LastName, c.City, c.Email, COUNT(i.InvoiceId)
+FROM Customers c join Invoices i
+ON c.CustomerId = i.CustomerId
+GROUP BY c.CustomerId
+
+3.
+SELECT t.Name, a.Title, ar.Name, t.TrackId
+FROM Artists ar
+INNER JOIN Albums a
+ON ar.ArtistId = a.ArtistId
+INNER JOIN Tracks t
+ON a.AlbumId = t.AlbumId
+
+
+
+
+
+
